@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Spawn Pallets Stacked Configuration File
+    This file is automatically created the first time the mod loads.
+    
+    Location: modSettings/SpawnPalletsStacked.xml in your FS25 folder
+    
+    You can edit these values to customize how pallets spawn.
+    Changes take effect the next time you load your save game.
+-->
+<spawnPalletsStacked>
+    <settings>
+        <!--
+            maxSpawnHeight: Maximum height (in meters) to which pallets can spawn
+            - Minimum value: 1.0
+            - Maximum value: 5.0
+            - Default: 2.0
+            - Setting this too high may cause pallets to spawn above buildings!
+        -->
+        <maxSpawnHeight>2.0</maxSpawnHeight>
+
+        <!--
+            layerOffset: Gap between layers when stacking (in meters)
+            - Minimum value: 0.0
+            - Maximum value: 0.5
+            - Default: 0.05
+            - Smaller values = tighter stacking
+            - Larger values = more spacing (safer spawning)
+        -->
+        <layerOffset>0.05</layerOffset>
+
+        <!--
+            shouldDoubleUp: Enable automatic "double up" for single-row spawn points
+            - Values: true or false
+            - Default: true
+            - When enabled, single rows will become two rows if there's space
+            - Example: Grain Mill goes from 5 pallets to 30 pallets!
+        -->
+        <shouldDoubleUp>true</shouldDoubleUp>
+
+        <!--
+            doubleUpShift: The shift applied to the first row when doubling up (in meters)
+            - Minimum value: 0.0
+            - Maximum value: 1.5
+            - Default: 0.7
+            - Adjusts the positioning of rows
+            - May need tweaking for specific buildings
+        -->
+        <doubleUpShift>0.7</doubleUpShift>
+
+        <!--
+            doubleUpGap: Space between rows when doubled up (in meters)
+            - Minimum value: 0.0
+            - Maximum value: 1.0
+            - Default: 0.1
+            - Smaller values = rows closer together
+        -->
+        <doubleUpGap>0.1</doubleUpGap>
+
+        <!--
+            minWidthToDoubleUp: Minimum width (in meters) needed to enable double-up
+            - Minimum value: 3.0
+            - Maximum value: 5.0
+            - Default: 3.0
+            - Spawn points narrower than this won't double up
+        -->
+        <minWidthToDoubleUp>3.0</minWidthToDoubleUp>
+
+        <!--
+            debugMode: Enable debug output in the game log
+            - Values: true or false
+            - Default: false
+            - Only enable this if you're troubleshooting issues
+        -->
+        <debugMode>false</debugMode>
+
+        <!--
+            debugStopMultiLayer: Stop creating multi-layer stacks (for debugging)
+            - Values: true or false
+            - Default: false
+            - When enabled, pallets spawn in single layer only
+            - Useful for testing if stacking is causing issues
+        -->
+        <debugStopMultiLayer>false</debugStopMultiLayer>
+    </settings>
+
+    <!--
+        Building-Specific Adjustments
+        
+        You can override settings for specific buildings here.
+        This is useful when a building needs custom values.
+        
+        Required attribute:
+        - filename: The exact path to the building's XML file
+        
+        Optional attributes (override any setting above):
+        - spawnHeight: Override maxSpawnHeight for this building
+        - doubleUpShift: Override doubleUpShift for this building
+        - doubleUpGap: Override doubleUpGap for this building
+        - shouldStack: Set to "false" to disable stacking entirely
+        - shouldDoubleUp: Override shouldDoubleUp for this building
+        
+        How to find the filename:
+        1. Look in your log.txt file when the building loads
+        2. OR check your savegame files (placeables.xml)
+        3. The path should match exactly (case-sensitive!)
+    -->
+    <adjustments>
+        <!-- Example: Base game building -->
+        <!--
+        <adjustment
+            filename="data/placeables/lizard/productionPoints/carpenterEU/carpenterEU.xml"
+            spawnHeight="2.5"
+            doubleUpShift="0.6"
+        />
+        -->
+
+        <!-- Example: Mod building -->
+        <!--
+        <adjustment
+            filename="FS25_MyModPack/placeables/customSawmill/customSawmill.xml"
+            spawnHeight="3.0"
+        />
+        -->
+
+        <!-- Example: Disable stacking for a specific building -->
+        <!--
+        <adjustment
+            filename="data/placeables/lizard/greenhouses/greenhouse01/greenhouse01.xml"
+            shouldStack="false"
+        />
+        -->
+
+        <!-- Example: Disable double-up for a specific building -->
+        <!--
+        <adjustment
+            filename="data/placeables/lizard/productionPoints/bakeryEU/bakeryEU.xml"
+            shouldDoubleUp="false"
+        />
+        -->
+
+        <!-- REAL WORLD EXAMPLES -->
+        
+        <!-- If a greenhouse has tall saplings that exceed the default 2m limit: -->
+        <!--
+        <adjustment
+            filename="data/placeables/lizard/greenhouses/greenhouse02/greenhouse02.xml"
+            spawnHeight="3.0"
+        />
+        -->
+
+        <!-- If a modded sawmill pallets spawn too far forward/back: -->
+        <!--
+        <adjustment
+            filename="FS25_NoMansLand/placeables/sawmill/sawmill.xml"
+            doubleUpShift="0.8"
+            doubleUpGap="0.15"
+        />
+        -->
+
+        <!-- If a DLC building has its own stacking already: -->
+        <!--
+        <adjustment
+            filename="pdlc_forestryPack/placeables/productionPoints/petAccessoriesFactory/petAccessoriesFactory.xml"
+            shouldStack="false"
+        />
+        -->
+    </adjustments>
+
+    <!--
+        TIPS FOR CUSTOMIZATION:
+        
+        1. Increase stacking for all buildings:
+           - Set maxSpawnHeight to 3.0 or higher
+           - Warning: Some buildings may not have room!
+        
+        2. Disable double-up but keep stacking:
+           - Set shouldDoubleUp to false
+           - Pallets will still stack vertically
+        
+        3. Maximum pallets (risky!):
+           - Set maxSpawnHeight to 5.0
+           - Set shouldDoubleUp to true
+           - Set minWidthToDoubleUp to 2.0
+           - May cause spawn failures or glitches!
+        
+        4. Conservative settings (most stable):
+           - Keep maxSpawnHeight at 2.0
+           - Keep shouldDoubleUp at true
+           - Keep all defaults
+        
+        5. Finding the right values for a building:
+           - Enable debugMode
+           - Check log.txt for spawn information
+           - Adjust values in small increments
+           - Clear existing pallets before testing
+        
+        TROUBLESHOOTING:
+        
+        - Pallets not spawning: Increase doubleUpGap
+        - Pallets spawn too high: Decrease maxSpawnHeight
+        - Pallets sinking into each other: Increase layerOffset
+        - Second row off-center: Adjust doubleUpShift
+        - Pallets spawn outside building: Decrease doubleUpShift
+        
+        RECOMMENDED ADDITIONAL MODS:
+        
+        - "Limited Pallet Object Fix" by GtX
+          Increases game's pallet limit to prevent spawn failures
+          when using high stacking values
+    -->
+</spawnPalletsStacked>

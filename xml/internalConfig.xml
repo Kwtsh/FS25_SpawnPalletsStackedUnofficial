@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<spawnPalletsStacked>
+	<settings>
+		<maxSpawnHeight>2.0</maxSpawnHeight>
+		<layerOffset>0.05</layerOffset>
+		<shouldDoubleUp>true</shouldDoubleUp>
+		<doubleUpShift>0.7</doubleUpShift>
+		<doubleUpGap>0.1</doubleUpGap>
+		<minWidthToDoubleUp>3.0</minWidthToDoubleUp>
+		<debugMode>false</debugMode>
+		<debugStopMultiLayer>false</debugStopMultiLayer>
+		<retryDelayMs>2000</retryDelayMs>
+	</settings>
+
+	<adjustments>
+		<!-- Internal adjustments for FS25 base game buildings -->
+		<!-- Add any FS25-specific adjustments here as needed -->
+		
+		<!-- Example: Platinum DLC buildings (if carried over from FS22) -->
+		<!--
+		<adjustment
+			filename="pdlc_premiumExpansion/placeables/productionPoints/sawmill/sawmill.xml"
+			shouldStack="false"
+		/>
+		-->
+	</adjustments>
+</spawnPalletsStacked>
